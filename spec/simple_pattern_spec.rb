@@ -20,7 +20,7 @@ describe SimplePattern do
        "French word",
     ]
 
-    words.zip(expected_values).zip do |word, expected_value|
+    words.zip(expected_values) do |word, expected_value|
       value =
         case word
         when SimplePattern[Any["a", "an", "the"], :english]
