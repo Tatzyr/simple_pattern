@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-class SimplePattern < Array
-  VERSION = "0.1.0"
+require "simple_pattern/version"
 
+class SimplePattern < Array
   def ===(other)
     zip(other).all? {|a, b| a === b }
   end
