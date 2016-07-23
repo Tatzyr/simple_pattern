@@ -1,0 +1,20 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.0.0
+  - 2.1.10
+  - 2.2.5
+  - 2.3.1
+  - ruby-head
+  - jruby-1.7.25
+  - jruby-9.1.0.0
+  - jruby-head
+  - rbx-2
+before_install: gem install bundler -v 1.12.5
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-1.7.25
+    - rvm: jruby-9.1.0.0
+    - rvm: jruby-head
+    - rvm: rbx-2
