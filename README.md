@@ -18,6 +18,8 @@ Any = SimplePattern::Any
 Not = SimplePattern::Not
 
 words = [
+  [100,           :english], # Non valid word
+  ["PASSPORT",    :english], # All caps word
   ["the",         :english], # English stopword
   ["little",      :english], # English word
   ["Schrödinger", :german],  # German word
@@ -26,6 +28,10 @@ words = [
 
 words.each do |word|
   case word
+  when SimplePattern[Not[String], Any]
+    puts "Non valid word"
+  when SimplePattern[/\A[A-Z]+\z/, Any]
+    puts "All caps word"
   when SimplePattern[Any["a", "an", "the"], :english]
     puts "English stopword"  
   when SimplePattern[Any, :english]

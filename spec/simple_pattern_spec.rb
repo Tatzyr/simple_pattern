@@ -9,6 +9,8 @@ describe SimplePattern do
 
   it "works at case-when" do
     words = [
+      [100,           :english],
+      ["PASSPORT",    :english],
       ["the",         :english],
       ["little",      :english],
       ["Schrödinger", :german],
@@ -16,6 +18,8 @@ describe SimplePattern do
     ]
 
     expected_values = [
+       "Non valid word",
+       "All caps word",
        "English stopword",
        "English word",
        "German word",
@@ -25,6 +29,10 @@ describe SimplePattern do
     words.zip(expected_values) do |word, expected_value|
       value =
         case word
+        when SimplePattern[Not[String], Any]
+          "Non valid word"
+        when SimplePattern[/\A[A-Z]+\z/, Any]
+          "All caps word"
         when SimplePattern[Any["a", "an", "the"], :english]
           "English stopword"
         when SimplePattern[Any, :english]
