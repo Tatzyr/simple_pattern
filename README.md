@@ -6,7 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/Tatzyr/simple_pattern/badges/coverage.svg)](https://codeclimate.com/github/Tatzyr/simple_pattern/coverage)
 [![Dependency Status](https://gemnasium.com/Tatzyr/simple_pattern.svg)](https://gemnasium.com/Tatzyr/simple_pattern)
 
-Very simple and plain pattern matching library for Ruby
+Very simple and plain pattern matching library using `Object#===`
 
 ## Synopsis
 

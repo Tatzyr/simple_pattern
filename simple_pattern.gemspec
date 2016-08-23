@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tatsuya Otsuka"]
   spec.email         = ["tatzyr@gmail.com"]
 
-  spec.summary       = %q{Very simple and plain pattern matching library for Ruby}
+  spec.summary       = %q{Very simple and plain pattern matching library using Object#===}
   spec.homepage      = "https://github.com/Tatzyr/simple_pattern"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
