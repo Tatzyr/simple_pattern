@@ -18,30 +18,25 @@ Any = SimplePattern::Any
 Not = SimplePattern::Not
 
 words = [
-  [100,           :english], # Non valid word
-  ["PASSPORT",    :english], # All caps word
-  ["the",         :english], # English stopword
-  ["little",      :english], # English word
-  ["Schrödinger", :german],  # German word
-  ["rendezvous",  :french],  # French word
+  ["payment",  59],  # :english
+  ["the",      66],  # :article
+  ["frühling", 37],  # :german
+  ["cellar", 17.7],  # :float
 ]
 
-words.each do |word|
+words.map {|word|
   case word
-  when SimplePattern[Not[String], Any]
-    puts "Non valid word"
-  when SimplePattern[/\A[A-Z]+\z/, Any]
-    puts "All caps word"
-  when SimplePattern[Any["a", "an", "the"], :english]
-    puts "English stopword"  
-  when SimplePattern[Any, :english]
-    puts "English word"
-  when SimplePattern[Any, Not[:french]]
-    puts "German word"
+  when SimplePattern[String, Float]
+    :float
+  when SimplePattern[Any["a", "an", "the"], Any]
+    :article
+  when SimplePattern[Not[/[äöüß]/], Any]
+    :english
   else
-    puts "French word"
+    :german
   end
-end
+}
+# => [:english, :article, :german, :float]
 ```
 
 More examples are at [`spec/simple_pattern_spec.rb`](https://github.com/Tatzyr/simple_pattern/blob/master/spec/simple_pattern_spec.rb).
